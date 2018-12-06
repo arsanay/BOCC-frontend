@@ -19,10 +19,10 @@ class CreateProject extends Component {
       [e.target.id]: e.target.value
     })
   }
-  handleChangeDate = (string) => {
-    console.log(string)
+  handleChangeDate = (Date) => {
+    console.log(Date)
     this.setState({
-      deadline:string
+      deadline:Date
     })
   // this.state.deadline=string
   }
@@ -31,6 +31,7 @@ class CreateProject extends Component {
     console.log(this.state);
 
     this.props.createProjects(this.state)
+    alert("");
    // console.log(this.props)
   }
   onFileChange= (e, file)=> {
@@ -62,29 +63,30 @@ class CreateProject extends Component {
         <form className="white" onSubmit={this.handleSubmit}>
             <h5 className="grey-text text-darken-3">Create a New Project</h5>
                <div className="input-field">
-                 <input type="text" id='title' onChange={this.handleChange} />
+                 <input type="text" id='title' required onChange={this.handleChange} />
                   <label htmlFor="title">Project Title</label>
               </div>
 
           <div className="input-field">
-            <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
+            <textarea id="content" className="materialize-textarea" required onChange={this.handleChange}></textarea>
               <label htmlFor="content">Project Content</label>
           </div>
 
           <div className="input-field">
-              <textarea id="creator" className="materialize-textarea" onChange={this.handleChange}></textarea>
+              <textarea id="creator" className="materialize-textarea" required onChange={this.handleChange}></textarea>
             <label htmlFor="content">Creator</label>
           </div>
 
           <div>
-            <label htmlFor="content" id="deadline">Set Deadline</label>
+            <label htmlFor="setDeadline" id="deadline">Set Deadline</label>
           </div>
           
           <div>
-          <DatePicker id="deadline" defaultValue={Date.now()}  onChange={(event) => this.handleChangeDate(event)}
+          <DatePicker id="deadline" defaultValue={Date.now()} required type="Date" onChange={(Date) => this.handleChangeDate(Date)}
                selected={this.state.deadline}  showTimeSelect timeFormat="HH:mm" timeIntervals={15} value={this.state.deadline}
                dateFormat="MMMM d, yyyy h:mm aa" timeCaption="time" placeholderText="Set Deadline"/>
           </div>
+          
 
           <label 
               className={labelClass}
