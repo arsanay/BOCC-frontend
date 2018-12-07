@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import ProjectList from '../projects/ProjectList'
 import Notifications from './Notifications'
-import { getProject,createProject} from './../../store/actions/projectActions'
+import { getProject} from './../../store/actions/projectActions'
 import { connect } from 'react-redux'
 
 class Dashboard extends Component {
   render() {
     this.props.getProjects(this.state)
     const { projects } = this.props;
-    console.log(projects)
+   // console.log(projects)
     return (     
       <div className="dashboard container">
         <div className="row">

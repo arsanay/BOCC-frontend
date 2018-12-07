@@ -1,10 +1,6 @@
 import axios from 'axios'
 const initState = {
-  projects: [
-    {id: '1', title: 'Manohara', content: 'Enrico Mantap',creator:'Mgr War Room'},
-    {id: '2', title: 'B O C C', content: 'Asa JOSS',creator:'Mgr War Room'},
-    {id: '3', title: 'DESHO', content: 'Ade TOP',creator:'Mgr War Room'}
-  ]
+  projects: []
 }
 
 const projectReducer =  (state = initState, action) => {
@@ -19,6 +15,7 @@ const projectReducer =  (state = initState, action) => {
         creator:action.project.creator ,
         deadline: action.project.deadline,
         imageFile:action.project.imageFile,
+        progress:action.project.progress
    
      })
    

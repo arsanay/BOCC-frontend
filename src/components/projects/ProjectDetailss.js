@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getProject} from './../../store/actions/projectActions'
-class ProjectDetails extends Component{
+class ProjectDetailss extends Component{
 render() {
   this.props.getProjects(this.state)
   const { projects } = this.props;
@@ -21,6 +21,13 @@ render() {
         <div className="card-action grey lighten-4 grey-text">
           <div>{creator[0]}</div>
           <div>{deadline[0]}</div>
+          <div
+  data-type="fill"
+  data-value="90"
+  data-path="M10 10L90 10L90 90L10 90Z"
+  class="ldBar"
+  data-fill="data:ldbar/res,bubble(#248,#fff,50,1)"
+></div>
         </div>
       </div>
     </div>
@@ -38,4 +45,4 @@ const mapDispatchToProps = (dispatch) =>{
   }
 }
 
-export default connect (mapStateToProps,mapDispatchToProps)(ProjectDetails)
+export default connect (mapStateToProps,mapDispatchToProps)(ProjectDetailss)

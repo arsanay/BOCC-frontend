@@ -6,7 +6,8 @@ const ProjectList = ({projects}) => {
     <div className="project-list section">
       { projects.map(project => {
         return (
-          <ProjectSummary project={project} key={project.id} />
+          <ProjectSummary project={project} 
+          />   
         )
       })}  
     </div>

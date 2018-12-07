@@ -2,7 +2,7 @@ import axios from 'axios'
  const createProject = (project) => {
     return async (dispatch, getState)=>{
         {
-            // make async call to database
+           // make async call to database
             dispatch({ type: 'CREATE_PROJECT', project });
              }
     }

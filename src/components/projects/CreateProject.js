@@ -11,7 +11,8 @@ class CreateProject extends Component {
     content: '',
     creator:'',
     deadline:'',
-    imageFile:''
+    imageFile:'',
+    progress:0
   }
 
   handleChange = (e) => {
@@ -27,7 +28,7 @@ class CreateProject extends Component {
   // this.state.deadline=string
   }
   handleSubmit = (e) => {
-    e.preventDefault();
+   // e.preventDefault();
     console.log(this.state);
 
     this.props.createProjects(this.state)
@@ -40,7 +41,7 @@ class CreateProject extends Component {
         reader = new FileReader();
         
     if (!file.type.match(pattern)) {
-        alert('Formato inválido');
+        alert('Format Invalid');
         return;
     }
     else {
@@ -59,6 +60,7 @@ class CreateProject extends Component {
   render() {
     let labelClass  = `uploader ${this.state.loaded && 'loaded'}`
     return (
+      
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
             <h5 className="grey-text text-darken-3">Create a New Project</h5>
@@ -66,7 +68,6 @@ class CreateProject extends Component {
                  <input type="text" id='title' required onChange={this.handleChange} />
                   <label htmlFor="title">Project Title</label>
               </div>
-
           <div className="input-field">
             <textarea id="content" className="materialize-textarea" required onChange={this.handleChange}></textarea>
               <label htmlFor="content">Project Content</label>
