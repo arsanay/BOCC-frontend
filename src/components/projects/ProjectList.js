@@ -1,17 +1,47 @@
-import React from 'react'
-import ProjectSummary from './ProjectSummary'
+import React from 'react' 
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-const ProjectList = ({projects}) => {
+class ProjectList extends React.Component {
+  
+  handleOnClick= (event) =>{
+    console.log(event)
+     this.setState({
+       selected_project: event
+     })
+  }
+
+  render(){
+ //   console.log(this.props)
   return (
     <div className="project-list section">
-      { projects.map(project => {
+      { this.props.result_project.map(project => {
         return (
-          <ProjectSummary project={project} 
-          />   
+          <Link to={'/project/'+ project._id}>
+          <div className="container">
+            <div className="card z-depth-0 project-summary" onClick={this.handleOnClick(project._id)}>
+              <div className="card-content grey-text text-darken-3">
+        <div className="card-title"><p>{project.title}</p> </div>
+        <p>{project.creator}</p>
+        <p className="grey-text">Deadline : {project.deadline}</p>
+       
+       </div>
+    </div>
+    </div>  
+          </Link>
         )
-      })}  
+      }
+      )}  
     </div>
   )
+    }
 }
 
-export default ProjectList
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    result_project:state.getproject.projects
+  }
+}
+
+export default  connect(mapStateToProps,null)(ProjectList)
