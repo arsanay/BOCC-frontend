@@ -10,7 +10,7 @@ const initState = {
 const getProjectReducer =  (state = initState,action) => {
   switch(action.type){
     case 'GETDATA_SUCCESS':
-   // console.log(action)
+    console.log(action)
     return {
       ...state,
       projects:action.key

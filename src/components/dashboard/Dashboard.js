@@ -3,11 +3,14 @@ import ProjectList from '../projects/ProjectList'
 import Notifications from './Notifications'
 import { getProject} from './../../store/actions/projectActions'
 import { connect } from 'react-redux'
-
-
-
 class Dashboard extends Component {
-
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.number === nextProps.number) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   render() {
     this.props.getProjects(this.state)
     const { projects } = this.props;
@@ -16,8 +19,8 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col s12 m6">
             <ProjectList projects={projects} />
-            <div class="ldBar" data-value="50" data-preset="energy"></div>
           </div>
+        
           <div className="col s12 m5 offset-m1">
             <Notifications />
           </div>

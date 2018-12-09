@@ -12,7 +12,7 @@ class CreateProject extends Component {
     creator:'',
     deadline:'',
     imageFile:'',
-    progress:0
+    progress:100
   }
 
   handleChange = (e) => {
@@ -76,11 +76,13 @@ class CreateProject extends Component {
               <textarea id="creator" className="materialize-textarea" required onChange={this.handleChange}></textarea>
             <label htmlFor="content">Creator</label>
           </div>
-
+          <div className="input-field">
+              <textarea id="progress" className="materialize-textarea" required onChange={this.handleChange}></textarea>
+            <label htmlFor="progress">Current Progress</label>
+          </div>
           <div>
             <label htmlFor="setDeadline" id="deadline">Set Deadline</label>
           </div>
-          
           <div>
           <DatePicker id="deadline" defaultValue={Date.now()} required type="Date" onChange={(Date) => this.handleChangeDate(Date)}
                selected={this.state.deadline}  showTimeSelect timeFormat="HH:mm" timeIntervals={15} value={this.state.deadline}

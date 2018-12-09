@@ -1,70 +1,92 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { getProject} from './../../store/actions/projectActions'
-class ProjectDetails extends Component{
-  state = {
-    projects: [
-      {id: '1', title: 'Manohara', content: 'Enrico Mantap',creator:'Mgr War Room'},
-      {id: '2', title: 'B O C C', content: 'Asa JOSS',creator:'Mgr War Room'},
-      {id: '3', title: 'DESHO', content: 'Ade TOP',creator:'Mgr War Room'}
-    ]
-  }
-
+import React from 'react'
+const ProjectDetails = (props) => {
+  console.log(props.location.tes)
+  return(
+   
+    <div className="project-list section">
+    <div className="container" >
+            <div className="card z-depth-0 project-summary" >
+              <div className="card-content grey-text text-darken-3">
+        <div className="card-title"><p>{props.location.tes.project.title}</p> </div>
+        <p>{props.location.tes.project.content}</p>
+        <p>{props.location.tes.project.creator}</p>
+        <p className="grey-text">Deadline : {props.location.tes.project.deadline}</p>
+        <div class="ldBar" data-value="50" data-preset="energy"></div>
+       </div>
+    </div>
+    </div>  
+    </div>
+  )
+ 
   
-  componentDidmount(){
-    const { projectid } = this.state;
-    if (projectid && projectid.length > 0) {
-      // update the state to the correct league here and this.props.id is the id that you want
-      const projectid = projectid.find(project_id => project_id._id === this.props._id);
-      this.setState({
-        projectid
-      })
-      console.log(this.state)
-    }
-  }
+}
+
+export default ProjectDetails
+
+
+
+
+
+
+
+
+
+
+
+// import React, { Component } from 'react'
+// import { connect } from 'react-redux'
+// import { getProject} from './../../store/actions/projectActions'
+// class ProjectDetails extends Component{
+//   state = {
+//     projects: [
+//       {id: '1', title: 'Manohara', content: 'Enrico Mantap',creator:'Mgr War Room'},
+//       {id: '2', title: 'B O C C', content: 'Asa JOSS',creator:'Mgr War Room'},
+//       {id: '3', title: 'DESHO', content: 'Ade TOP',creator:'Mgr War Room'}
+//     ]
+//   }
     
   
-  render(){
-    const { projects } = this.props;
-    return (
-    <React.Fragment>
-      {!projects
-       ? <p> Loading ...</p>
-         : projects.map(datum=>{
-          const {title, content, creator, deadline} =datum
-          return (
-            <div className="container section project-details">
-              <div className="card z-depth-0">
-                <div className="card-content">
-                  <span className="card-title">{title} </span>
-                  <p> {content}</p>
-                </div>
-                <div className="card-action grey lighten-4 grey-text">
-                  <div>{creator}</div>
-                  <div>{deadline}</div>
-                </div>
-              </div>
-            </div>
-          )
-         })
-         }  
-      </React.Fragment>
-    )
-  }
-}
+//   render(){
+//     const { projects } = this.props;
+//     return (
+//     <React.Fragment>
+//       {!projects
+//        ? <p> Loading ...</p>
+//          : projects.map(datum=>{
+//           const {title, content, creator, deadline} =datum
+//           return (
+//             <div className="container section project-details">
+//               <div className="card z-depth-0">
+//                 <div className="card-content">
+//                   <span className="card-title">{title} </span>
+//                   <p> {content}</p>
+//                 </div>
+//                 <div className="card-action grey lighten-4 grey-text">
+//                   <div>{creator}</div>
+//                   <div>{deadline}</div>
+//                 </div>
+//               </div>
+//             </div>
+//           )
+//          })
+//          }  
+//       </React.Fragment>
+//     )
+//   }
+// }
 
-const mapStateToProps = (state) => {
-  return {
-    projects:state.getproject.projects
-  }
-}
-const mapDispatchToProps = (dispatch) =>{
-  return {
-    getProjects:(project) => dispatch(getProject(project))
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     projects:state.getproject.projects
+//   }
+// }
+// const mapDispatchToProps = (dispatch) =>{
+//   return {
+//     getProjects:(project) => dispatch(getProject(project))
+//   }
+// }
 
-export default connect (mapStateToProps,mapDispatchToProps)(ProjectDetails)
+// export default connect (mapStateToProps,mapDispatchToProps)(ProjectDetails)
 
 
  //itu = datumbuat apa mas, line 19, kok 

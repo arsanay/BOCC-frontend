@@ -16,7 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/'component={Dashboard} />
             {/* Route /project ini yang bermasalah, karena kamu ngerender 2 kali, harusnya gak gitu */}
-            <Route  exact path='/project/:_id' component={ProjectDetails}/>
+            <Route path='/project/:_id' component={ProjectDetails}/>
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/create' component={CreateProject} />
