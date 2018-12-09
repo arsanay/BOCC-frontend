@@ -60,7 +60,6 @@ class CreateProject extends Component {
   render() {
     let labelClass  = `uploader ${this.state.loaded && 'loaded'}`
     return (
-      
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
             <h5 className="grey-text text-darken-3">Create a New Project</h5>

@@ -7,10 +7,10 @@ const initState = {
   ]
 }
 
-const getProjectReducer =  (state = initState,action) => {
+const getProjectByIdReducer =  (state = initState,action) => {
   switch(action.type){
     case 'GETDATA_SUCCESS':
-    console.log(action)
+    //console.log(action)
     return {
       ...state,
       projects:action.key
@@ -26,4 +26,4 @@ const getProjectReducer =  (state = initState,action) => {
   }
 };
 
-export default getProjectReducer;
+export default getProjectByIdReducer;
