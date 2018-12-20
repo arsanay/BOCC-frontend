@@ -1,48 +1,58 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from "react";
+import { login } from "../../store/actions/authActions";
+import { connect } from "react-redux";
 class SignIn extends Component {
   state = {
-    email: '',
-    password: ''
-  }
-  handleChange = (e) => {
+    email: "",
+    password: ""
+  };
+  handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value
-      
-    })
-  }
-  handleSubmit = async (e) => {
-    console.log(this.state)
+    });
+  };
+  handleSubmit = async e => {
     e.preventDefault();
-    try{
-       await  axios.post('http://localhost:8081/',{
-        email:this.state.email,
-        password:this.state.password
-      })
-    } catch(err){
-      console.log(err)
-    }
-  }
+    this.props.logins(this.state);
+    // this.props.history.push("/dashboard");
+  };
   render() {
+    const { authError } = this.props;
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
           <h5 className="grey-text text-darken-3">Sign In</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>
-            <input type="email" id='email' onChange={this.handleChange} />
+            <input type="email" id="email" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <label htmlFor="password">Password</label>
-            <input type="password" id='password' onChange={this.handleChange} />
+            <input type="password" id="password" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Login</button>
+            <div className="red-text  center">
+              {authError ? <p>{authError}</p> : null}
+            </div>
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
+const mapStateToProps = state => {
+  return {
+    authError: state.signin.loginError
+  };
+};
 
-export default SignIn
+const mapDispatchToProps = dispatch => {
+  return {
+    logins: identity => dispatch(login(identity))
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);

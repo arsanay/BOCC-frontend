@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {createProject} from '../../store/actions/projectActions'
 import DatePicker from "react-datepicker";
- 
 import "react-datepicker/dist/react-datepicker.css";
 class CreateProject extends Component {
   
@@ -28,9 +27,8 @@ class CreateProject extends Component {
   // this.state.deadline=string
   }
   handleSubmit = (e) => {
-   // e.preventDefault();
+    e.preventDefault();
     console.log(this.state);
-
     this.props.createProjects(this.state)
     alert("");
    // console.log(this.props)

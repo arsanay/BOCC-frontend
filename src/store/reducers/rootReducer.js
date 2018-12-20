@@ -1,14 +1,20 @@
-import authReducer from './authReducer'
+import signUpReducer from './signUpReducer'
+import signInReducer from './signInReducer'
 import projectReducer from './projectReducer'
 import getProjectReducer from './getProjectReducer'
-import getProjectByIdReducer from './getProjectByIdReducer'
+import editProjectReducer from './editProjectReducer'
+import deleteProjectReducer from './deleteProjectReducer'
+import authReducer from './authReducer'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  signin: signInReducer,
+  signup: signUpReducer,
   project: projectReducer,
   getproject: getProjectReducer,
-  getprojectbyid: getProjectByIdReducer
+  editproject: editProjectReducer,
+  deleteproject: deleteProjectReducer,
+  maintainauth: authReducer
 });
 
 export default rootReducer
