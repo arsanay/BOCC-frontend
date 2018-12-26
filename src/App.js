@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
+import Sidebar from './components/layout/Sidebar'
 import Dashboard from './components/dashboard/Dashboard'
+import Introduce from './components/dashboard/Introduce'
 import ProjectDetails from './components/projects/ProjectDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
@@ -32,14 +34,15 @@ class App extends Component {
         <AuthProvider authUrl={urlAuth}>
                 <AuthConsumer>
                   {({ userInfo }) => {
-                    return <Navbar Navbar={userInfo} />
+                     return <Navbar Navbar={userInfo} /> 
                   }}
                 </AuthConsumer>
               </AuthProvider>
           
           <Switch>
-            <Route exact path='/'component={SignIn} />
+            <Route exact path='/'component={Introduce} />
             {/* Route /project ini yang bermasalah, karena kamu ngerender 2 kali, harusnya gak gitu */}
+            <Route path='/signin'component={SignIn} />
             <Route path='/project/:_id' component={ProjectDetails}/>
             <Route path='/dashboard' component={Dashboard} />
             <Route path='/signup' component={SignUp} />
